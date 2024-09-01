@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: melikost-extractor
+  namespace: fury-melikost
+  labels:
+    app: melikost-extractor
+    app.kubernetes.io/name: melikost-extractor
+    app.kubernetes.io/instance: melikost
+    app.kubernetes.io/version: 2.2.3
+    app.kubernetes.io/component: extractor
+    app.kubernetes.io/part-of: melikost
+    app.kubernetes.io/managed-by: kustomize
+  annotations:
+    configmap.reloader.stakater.com/reload: melikost-extractor-properties
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: melikost-extractor
+  template:
+    metadata:
+      labels:
+        app: melikost-extractor
+    spec:
+      containers:
+      - name: melikost-extractor
+        image: ${containerRegistry}/melikost-extractor:2.2.3
+        imagePullSecrets:
+        - name: fury-registry
+        env:
+        - name: GIN_MODE
+          value: release
+        - name: CLUSTER_NAME
+          value: ${clusterName}
+        - name: METADATA
+          value: customerName:${customerName}
+        ports:
+        - containerPort: 3021
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 500m
+            memory: 4Gi
+        volumeMounts:
+        - name: config
+          mountPath: /app/config.yaml
+          subPath: config.yaml
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1001
+      securityContext:
+        fsGroup: 1001
+      volumes:
+      - name: config
+        configMap:
+          name: melikost-extractor-properties
