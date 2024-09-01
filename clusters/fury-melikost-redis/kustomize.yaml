@@ -1,0 +1,25 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: fury-melikost-extractor
+  namespace: flux-system
+spec:
+  interval: 3m
+  targetNamespace: fury-system
+  path: "./apps/fury-melikost/redis/overlays/dev"
+  prune: true
+  timeout: 1m0s
+  dependsOn:
+  - name: global-config
+  - name: cluster-base-config
+  - name: aws-karpenter
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: global-cluster-config
+      - kind: ConfigMap
+        name: dynamic-cluster-data
+  sourceRef:
+    kind: GitRepository
+    name: fury-serverless-specs-base
+    namespace: flux-system
