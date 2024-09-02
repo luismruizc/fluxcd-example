@@ -1,0 +1,59 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: melikost-prometheus
+  namespace: fury-melikost
+spec:
+  interval: 1m
+  releaseName: melikost-prometheus
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      sourceRef:
+        kind: HelmRepository
+        name: melikost-prometheus
+        namespace: fury-melikost
+      version: "62.3.1"
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    kube-state-metrics:
+      extraArgs:
+        - --metric-labels-allowlist=pods=[*],nodes=[*]
+    prometheusOperator:
+      enabled: true
+      resources:
+        limits:
+          cpu: 200m
+          memory: 200Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        attachMetadata:
+          node: true
+        probes: false
+    defaultRules:
+      create: false
+    alertmanager:
+      enabled: false
+    grafana:
+      enabled: false
+    kubeApiServer:
+      enabled: false
+    kubeControllerManager:
+      enabled: false
+    coreDns:
+      enabled: false
+    kubeEtcd:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+    kubeProxy:
+      enabled: false

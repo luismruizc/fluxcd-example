@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: melikost-redis
-  namespace: fury-melikost
+  namespace: flux-system
 spec:
   type: "oci"
   interval: 1y

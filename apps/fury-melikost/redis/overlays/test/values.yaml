@@ -1,24 +1,31 @@
-global:
-  storageClass: "faster-storage" # faster-storage on AWS
-  redis:
-    password: "melikost"
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: melikost-redis
+  namespace: fury-melikost
+spec:
+  values:
+    global:
+      storageClass: "faster-storage" # faster-storage on AWS
+      redis:
+        password: "melikost"
 
-master:
-  count: 1
-  resources:
-    requests:
-      cpu: 50m
-      memory: 64Mi
-    limits:
-      cpu: 250m
-      memory: 2Gi
+    master:
+      count: 1
+      resources:
+        requests:
+          cpu: 50m
+          memory: 64Mi
+        limits:
+          cpu: 250m
+          memory: 2Gi
 
-replica:
-  replicaCount: 1
-  resources:
-    requests:
-      cpu: 50m
-      memory: 64Mi
-    limits:
-      cpu: 250m
-      memory: 2Gi
+    replica:
+      replicaCount: 1
+      resources:
+        requests:
+          cpu: 50m
+          memory: 64Mi
+        limits:
+          cpu: 250m
+          memory: 2Gi

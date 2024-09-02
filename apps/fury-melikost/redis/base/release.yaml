@@ -4,7 +4,7 @@ metadata:
   name: melikost-redis
   namespace: fury-melikost
 spec:
-  interval: 5m
+  interval: 1m
   releaseName: melikost-redis
   chart:
     spec:
@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: melikost-redis
-        namespace: flux-system
+        namespace: fury-melikost
       version: "20.0.3"
   install:
     remediation:

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: melikost-extractor-properties
-  namespace: fury-melikost
+  namespace: melikost
   labels:
     app: melikost-extractor
     app.kubernetes.io/name: melikost-extractor

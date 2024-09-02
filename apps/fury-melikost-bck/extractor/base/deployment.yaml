@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: melikost-extractor
-        image: ${containerRegistry}/melikost-extractor:2.2.0
+        image: ${containerRegistry}/melikost-extractor:2.2.3
         imagePullSecrets:
         - name: fury-registry
         env:
