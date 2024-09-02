@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: melikost-prometheus
-        namespace: flux-system
+        namespace: fury-melikost
       version: "62.3.1"
   install:
     remediation:
