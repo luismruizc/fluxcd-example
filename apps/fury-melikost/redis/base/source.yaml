@@ -5,5 +5,5 @@ metadata:
   namespace: fury-melikost
 spec:
   type: "oci"
-  interval: 5h
+  interval: 1m
   url: oci://registry-1.docker.io/bitnamicharts
