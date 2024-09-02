@@ -14,18 +14,18 @@ spec:
       count: 1
       resources:
         requests:
-          cpu: 50m
-          memory: 64Mi
+          cpu: 100m
+          memory: 128Mi
         limits:
           cpu: 250m
-          memory: 2Gi
+          memory: 1Gi
 
     replica:
       replicaCount: 1
       resources:
         requests:
-          cpu: 50m
-          memory: 64Mi
+          cpu: 100m
+          memory: 128Mi
         limits:
           cpu: 250m
-          memory: 2Gi
+          memory: 1Gi
