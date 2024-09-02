@@ -6,7 +6,7 @@ metadata:
 spec:
   values:
     global:
-      storageClass: "faster-storage" # faster-storage on AWS
+      storageClass: "standard" # faster-storage on AWS
       redis:
         password: "melikost"
 
