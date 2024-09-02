@@ -17,3 +17,14 @@ flux install clusters/fury-melikost-prometheus
 flux install clusters/fury-melikost-redis 
 
 flux delete clusters/dev/cassandra
+
+flux uninstall --namespace=flux-system
+
+
+  flux bootstrap github \
+  --token-auth \
+  --owner=luismruizc \
+  --repository=https://github.com/luismruizc/fluxcd-example \
+  --branch=main \
+  --path=clusters/prom+redis \
+  --personal
