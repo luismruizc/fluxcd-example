@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 3m
-  targetNamespace: fury-system
+  targetNamespace: fury-melikost
   path: "./apps/fury-melikost/redis/overlays/dev"
   prune: true
   timeout: 1m0s

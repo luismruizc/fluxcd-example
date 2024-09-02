@@ -4,5 +4,5 @@ metadata:
   name: melikost-prometheus
   namespace: flux-system
 spec:
-  interval: 3m
+  interval: 1m
   url: https://prometheus-community.github.io/helm-charts
