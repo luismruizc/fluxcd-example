@@ -9,7 +9,6 @@ spec:
       storageClass: "standard" # faster-storage on AWS
       redis:
         password: "melikost"
-
     master:
       count: 1
       resources:
@@ -17,15 +16,5 @@ spec:
           cpu: 100m
           memory: 128Mi
         limits:
-          cpu: 250m
-          memory: 1Gi
-
-    replica:
-      replicaCount: 1
-      resources:
-        requests:
-          cpu: 100m
-          memory: 128Mi
-        limits:
-          cpu: 250m
+          cpu: 333m
           memory: 1Gi
