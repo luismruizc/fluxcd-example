@@ -22,7 +22,7 @@ spec:
       retries: 3
   values:
     global:
-      storageClass: "faster-storage" # faster-storage on AWS
+      storageClass: "faster-storage"
       redis:
         password: "melikost"
     master:
