@@ -5,3 +5,4 @@ namespace: fury-melikost
 resources:
   - source.yaml
   - release.yaml
+  - release-adapter.yaml

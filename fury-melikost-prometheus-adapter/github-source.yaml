@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: fury-serverless-specs-base
+  namespace: flux-system
+spec:
+  interval: 2m
+  url: https://github.com/luismruizc/fluxcd-example
+  ref:
+    branch: main

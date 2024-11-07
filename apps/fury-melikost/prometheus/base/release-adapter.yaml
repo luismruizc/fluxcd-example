@@ -4,19 +4,16 @@ metadata:
   name: melikost-prometheus-adapter
   namespace: fury-melikost
 spec:
+  releaseName: melikost-prometheus-adapter
   chart:
     spec:
       chart: prometheus-adapter
-      interval: 1m
       sourceRef:
         kind: HelmRepository
         name: melikost-prometheus
+        namespace: fury-melikost
       version: 4.10.0
-  install:
-    remediation:
-      retries: 1
   interval: 1m
-  timeout: 5m
   values:
     logLevel: 1
     prometheus:
