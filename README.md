@@ -11,6 +11,8 @@ export GITHUB_TOKEN=''
   --path=clusters/fury-melikost-prometheus \
   --personal
 
+flux reconcile helmrelease melikost-prometheus-adapter -n fury-melikost
+
 flux uninstall --namespace=flux-system
 
 flux install clusters/fury-melikost-prometheus

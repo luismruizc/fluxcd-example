@@ -22,7 +22,7 @@ spec:
       custom:
         - metricsQuery: (sum(<<.Series>>{<<.LabelMatchers>>}) by (<<.GroupBy>>))
           name:
-            as: "${'{1}_nsq_messages_queued'}"
+            as: "${1}_nsq_messages_queued"
             matches: ^(.*)_nsq_channel_depth
           resources:
             overrides:
